@@ -26,14 +26,28 @@
           </ul>
         </div>
         <ul class="nav navbar-nav float-right">
-          <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag"
-              href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
-            <div class="dropdown-menu" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="#"
-                data-language="en"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#"
-                data-language="fr"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#"
-                data-language="de"><i class="flag-icon flag-icon-de"></i> German</a><a class="dropdown-item" href="#"
-                data-language="pt"><i class="flag-icon flag-icon-pt"></i> Portuguese</a></div>
+          <li class="dropdown dropdown-language nav-item">
+            <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="flag-icon flag-icon-es"></i>
+              <span class="selected-language">Español</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+              <a class="dropdown-item" href="#" data-language="es">
+                <i class="flag-icon flag-icon-es"></i> Español
+              </a>
+              <a class="dropdown-item" href="#" data-language="en">
+                <i class="flag-icon flag-icon-us"></i> English
+              </a>
+              <a class="dropdown-item" href="#" data-language="fr">
+                <i class="flag-icon flag-icon-fr"></i> French
+              </a>
+              <a class="dropdown-item" href="#" data-language="de">
+                <i class="flag-icon flag-icon-de"></i> German
+              </a>
+              <a class="dropdown-item" href="#" data-language="pt">
+                <i class="flag-icon flag-icon-pt"></i> Portuguese
+              </a>
+            </div>
           </li>
           <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i
                 class="ficon feather icon-maximize"></i></a></li>
@@ -121,7 +135,7 @@
                 <span class="user-status">Available</span>
               </div>
               <span>
-                <img class="round" src="assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40"
+                <img class="round" src="assets/images/portrait/small/avatar-s-11.png" alt="avatar" height="40"
                   width="40">
               </span>
             </a>
@@ -139,7 +153,7 @@
                 <i class="feather icon-message-square"></i> Chats
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/auth']" routerLinkActive="active">
                 <i class="feather icon-power"></i> Logout
               </a>
             </div>

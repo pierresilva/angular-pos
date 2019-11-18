@@ -28,6 +28,10 @@ i18next.addResourceBundle('de_p', 'translation', {
   key: "Kuchen Sesam Snaps Cupcake Lebkuchen dänisch Ich liebe Lebkuchen. Apfelkuchen Jujubes Chupa Chups Muffin Halwa Lutscher. Schokoladenkuchen-Haferkuchen-Tiramisumarzipanzuckerpflaume. Donut süße Torte Hafer Kuchen Dragée Obstkuchen Zuckerwatte Zitronentropfen."
 });
 
+i18next.addResourceBundle('es_p', 'translation', {
+  key: "Esto es algo en español"
+});
+
 // Change Card Text Language On Click
 $(".language-options").on("click", ".i18n-lang-option", function () {
   var selected_lng = $(this).data('lng');

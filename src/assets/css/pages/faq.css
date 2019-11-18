@@ -2,7 +2,7 @@
         DARK LAYOUT
 =========================================================*/
 .faq-bg {
-  background : url(../../../app-assets/images/pages/faq.jpg) no-repeat;
+  background : url(../../images/pages/faq.jpg) no-repeat;
   -webkit-background-size : cover;
           background-size : cover;
 }
