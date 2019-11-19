@@ -11,6 +11,10 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: './home/home.module#HomeModule',
+      },
+      {
+        path: 'email',
+        loadChildren: './email/email.module#EmailModule',
       }
     ]
   },

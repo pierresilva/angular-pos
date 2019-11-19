@@ -10,8 +10,6 @@ declare var jqueryI18next: any;
 export class App {
   init(window, document, $) {
 
-    console.log($.app);
-
     let $html = $('html');
     let $body = $('body');
     let $danger = '#ea5455';
@@ -30,7 +28,7 @@ export class App {
       rtl = true;
     }
 
-    setTimeout(function () {
+    setTimeout(function() {
       $html.removeClass('loading').addClass('loaded');
     }, 1200);
 
@@ -44,7 +42,7 @@ export class App {
       $.app.nav.init(config);
     }
 
-    Unison.on('change', function (bp) {
+    Unison.on('change', function(bp) {
       $.app.menu.change();
     });
 
@@ -83,7 +81,7 @@ export class App {
     }
 
     // Collapsible Card
-    $('a[data-action="collapse"]').on('click', function (e) {
+    $('a[data-action="collapse"]').on('click', function(e) {
       e.preventDefault();
       $(this).closest('.card').children('.card-content').collapse('toggle');
       // Adding bottom padding on card collapse
@@ -92,27 +90,26 @@ export class App {
     });
 
     // Toggle fullscreen
-    $('a[data-action="expand"]').on('click', function (e) {
+    $('a[data-action="expand"]').on('click', function(e) {
       e.preventDefault();
       $(this).closest('.card').find('[data-action="expand"] i').toggleClass('icon-maximize icon-minimize');
       $(this).closest('.card').toggleClass('card-fullscreen');
     });
 
     //  Notifications & messages scrollable
-    $('.scrollable-container').each(function () {
+    $('.scrollable-container').each(function() {
       let scrollable_container = new PerfectScrollbar($(this)[0], {
         wheelPropagation: false
       });
     });
 
     // Reload Card
-    $('a[data-action="reload"]').on('click', function () {
+    $('a[data-action="reload"]').on('click', function() {
       let block_ele = $(this).closest('.card').find('.card-content');
       let reloadActionOverlay;
       if ($body.hasClass('dark-layout')) {
         let reloadActionOverlay = '#10163a';
-      }
-      else {
+      } else {
         let reloadActionOverlay = '#fff';
       }
       // Block Element
@@ -132,19 +129,19 @@ export class App {
     });
 
     // Close Card
-    $('a[data-action="close"]').on('click', function () {
+    $('a[data-action="close"]').on('click', function() {
       $(this).closest('.card').removeClass().slideUp('fast');
     });
 
     // Match the height of each card in a row
-    setTimeout(function () {
-      $('.row.match-height').each(function () {
+    setTimeout(function() {
+      $('.row.match-height').each(function() {
         $(this).find('.card').not('.card .card').matchHeight(); // Not .card .card prevents collapsible cards from taking height
       });
     }, 500);
 
 
-    $('.card .heading-elements a[data-action="collapse"]').on('click', function () {
+    $('.card .heading-elements a[data-action="collapse"]').on('click', function() {
       let $this = $(this),
         card = $this.closest('.card');
       let cardHeight;
@@ -174,7 +171,7 @@ export class App {
     }
 
     //card heading actions buttons small screen support
-    $('.heading-elements-toggle').on('click', function () {
+    $('.heading-elements-toggle').on('click', function() {
       $(this).next('.heading-elements').toggleClass('visible');
     });
 
@@ -197,17 +194,17 @@ export class App {
     }
 
     //Custom File Input
-    $('.custom-file input').change(function (e) {
+    $('.custom-file input').change(function(e) {
       $(this).next('.custom-file-label').html(e.target.files[0].name);
     });
 
 
     /* Text Area Counter Set Start */
 
-    $('.char-textarea').on('keyup', function (event) {
+    $('.char-textarea').on('keyup', function(event) {
       checkTextAreaMaxLength(this, event);
       // to later change text color in dark layout
-      $(this).addClass('active')
+      $(this).addClass('active');
     });
 
     /*
@@ -223,7 +220,9 @@ export class App {
 
 
       if (!checkSpecialKeys(e)) {
-        if (textBox.value.length < maxLength - 1) textBox.value = textBox.value.substring(0, maxLength);
+        if (textBox.value.length < maxLength - 1) {
+          textBox.value = textBox.value.substring(0, maxLength);
+        }
       }
       $('.char-count').html(textBox.value.length);
 
@@ -231,30 +230,31 @@ export class App {
         $('.counter-value').css('background-color', $danger);
         $('.char-textarea').css('color', $danger);
         // to change text color after limit is maxedout out
-        $('.char-textarea').addClass('max-limit')
-      }
-      else {
+        $('.char-textarea').addClass('max-limit');
+      } else {
         $('.counter-value').css('background-color', $primary);
         $('.char-textarea').css('color', $textcolor);
-        $('.char-textarea').removeClass('max-limit')
+        $('.char-textarea').removeClass('max-limit');
 
       }
 
       return true;
     }
+
     /*
     Checks if the keyCode pressed is inside special chars
     -------------------------------------------------------
     @prerequisite:  e = e.keyCode object for the key pressed
     */
     function checkSpecialKeys(e) {
-      if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40)
+      if (e.keyCode != 8 && e.keyCode != 46 && e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40) {
         return false;
-      else
+      } else {
         return true;
+      }
     }
 
-    $('.content-overlay').on('click', function () {
+    $('.content-overlay').on('click', function() {
       $('.search-list').removeClass('show');
       $('.app-content').removeClass('show-overlay');
       $('.bookmark-wrapper .bookmark-input').removeClass('show');
@@ -263,7 +263,7 @@ export class App {
     // To show shadow in main menu when menu scrolls
     let container = document.getElementsByClassName('main-menu-content');
     if (container.length > 0) {
-      container[0].addEventListener('ps-scroll-y', function () {
+      container[0].addEventListener('ps-scroll-y', function() {
         if ($(this).find('.ps__thumb-y').position().top > 0) {
           $('.shadow-bottom').css('display', 'block');
         } else {
@@ -273,7 +273,7 @@ export class App {
     }
 
     // Hide overlay menu on content overlay click on small screens
-    $(document).on('click', '.sidenav-overlay', function (e) {
+    $(document).on('click', '.sidenav-overlay', function(e) {
       // Hide menu
       $.app.menu.hide();
       return false;
@@ -288,7 +288,7 @@ export class App {
       if ($(swipeInElement).length > 0) {
         let swipeInMenu = new Hammer(swipeInElement);
 
-        swipeInMenu.on('panright', function (ev) {
+        swipeInMenu.on('panright', function(ev) {
           if ($body.hasClass('vertical-overlay-menu')) {
             $.app.menu.open();
             return false;
@@ -297,7 +297,7 @@ export class App {
       }
 
       // menu swipe out gesture
-      setTimeout(function () {
+      setTimeout(function() {
         let swipeOutElement = document.querySelector('.main-menu');
         let swipeOutMenu;
 
@@ -309,7 +309,7 @@ export class App {
             threshold: 100
           });
 
-          swipeOutMenu.on('panleft', function (ev) {
+          swipeOutMenu.on('panleft', function(ev) {
             if ($body.hasClass('vertical-overlay-menu')) {
               $.app.menu.hide();
               return false;
@@ -325,7 +325,7 @@ export class App {
 
         let swipeOutOverlayMenu = new Hammer(swipeOutOverlayElement);
 
-        swipeOutOverlayMenu.on('panleft', function (ev) {
+        swipeOutOverlayMenu.on('panleft', function(ev) {
           if ($body.hasClass('vertical-overlay-menu')) {
             $.app.menu.hide();
             return false;
@@ -334,18 +334,18 @@ export class App {
       }
     }
 
-    $(document).on('click', '.menu-toggle, .modern-nav-toggle', function (e) {
+    $(document).on('click', '.menu-toggle, .modern-nav-toggle', function(e) {
       e.preventDefault();
 
       // Toggle menu
       $.app.menu.toggle();
 
-      setTimeout(function () {
+      setTimeout(function() {
         $(window).trigger('resize');
       }, 200);
 
       if ($('#collapsed-sidebar').length > 0) {
-        setTimeout(function () {
+        setTimeout(function() {
           if ($body.hasClass('menu-expanded') || $body.hasClass('menu-open')) {
             $('#collapsed-sidebar').prop('checked', false);
           } else {
@@ -373,7 +373,7 @@ export class App {
     });
 
     // Page full screen
-    $('.nav-link-expand').on('click', function (e) {
+    $('.nav-link-expand').on('click', function(e) {
       if (typeof screenfull != 'undefined') {
         if (screenfull.enabled) {
           screenfull.toggle();
@@ -382,7 +382,7 @@ export class App {
     });
     if (typeof screenfull != 'undefined') {
       if (screenfull.enabled) {
-        $(document).on(screenfull.raw.fullscreenchange, function () {
+        $(document).on(screenfull.raw.fullscreenchange, function() {
           if (screenfull.isFullscreen) {
             $('.nav-link-expand').find('i').toggleClass('icon-minimize icon-maximize');
             $('html').addClass('full-screen');
@@ -393,12 +393,12 @@ export class App {
         });
       }
     }
-    $(document).ready(function () {
+    $(document).ready(function() {
 
       /**********************************
        *   Form Wizard Step Icon
        **********************************/
-      $('.step-icon').each(function () {
+      $('.step-icon').each(function() {
         let $this = $(this);
         if ($this.siblings('span.step').length > 0) {
           $this.siblings('span.step').empty();
@@ -408,11 +408,11 @@ export class App {
     });
 
     // Update manual scroller when window is resized
-    $(window).resize(function () {
+    $(window).resize(function() {
       $.app.menu.manualScroller.updateHeight();
     });
 
-    $('#sidebar-page-navigation').on('click', 'a.nav-link', function (e) {
+    $('#sidebar-page-navigation').on('click', 'a.nav-link', function(e) {
       e.preventDefault();
       e.stopPropagation();
       let $this = $(this),
@@ -422,7 +422,7 @@ export class App {
       $('html, body').animate({
         scrollTop: scrollto
       }, 0);
-      setTimeout(function () {
+      setTimeout(function() {
         $this.parent('.nav-item').siblings('.nav-item').children('.nav-link').removeClass('active');
         $this.addClass('active');
       }, 100);
@@ -435,23 +435,23 @@ export class App {
     i18next
       .use(window.i18nextXHRBackend)
       .init({
-        debug: false,
-        fallbackLng: 'es',
-        backend: {
-          loadPath: 'assets/data/locales/{{lng}}.json',
+          debug: false,
+          fallbackLng: 'es',
+          backend: {
+            loadPath: 'assets/data/locales/{{lng}}.json',
+          },
+          returnObjects: true
         },
-        returnObjects: true
-      },
-        function (err, t) {
+        function(err, t) {
           // resources have been loaded
           jqueryI18next.init(i18next, $);
-          i18next.changeLanguage(currentLanguage, function (err, t) {
+          i18next.changeLanguage(currentLanguage, function(err, t) {
             $('.main-menu').localize();
           });
         });
 
     // change language according to data-language of dropdown item
-    $('.dropdown-language .dropdown-item').on('click', function () {
+    $('.dropdown-language .dropdown-item').on('click', function() {
       let $this = $(this);
       $this.siblings('.selected').removeClass('selected');
       $this.addClass('selected');
@@ -460,17 +460,17 @@ export class App {
       $('#dropdown-flag .selected-language').text(selectedLang);
       $('#dropdown-flag .flag-icon').removeClass().addClass(selectedFlag);
       currentLanguage = $this.data('language');
-      i18next.changeLanguage(currentLanguage, function (err, t) {
+      i18next.changeLanguage(currentLanguage, function(err, t) {
         $('.main-menu').localize();
       });
     });
 
     /********************* Bookmark & Search ***********************/
-    // This letiable is used for mouseenter and mouseleave events of search list
+      // This letiable is used for mouseenter and mouseleave events of search list
     let $filename = $('.search-input input').data('search');
 
     // Bookmark icon click
-    $('.bookmark-wrapper .bookmark-star').on('click', function (e) {
+    $('.bookmark-wrapper .bookmark-star').on('click', function(e) {
       e.stopPropagation();
       $('.bookmark-wrapper .bookmark-input').toggleClass('show');
       $('.bookmark-wrapper .bookmark-input input').val('');
@@ -487,8 +487,7 @@ export class App {
       for (let i = 0; i < arrList.length; i++) {
         if (i === 0) {
           $activeItemClass = 'current_item';
-        }
-        else {
+        } else {
           $activeItemClass = '';
         }
         $arrList += '<li class="auto-suggestion d-flex align-items-center justify-content-between cursor-pointer ' + $activeItemClass + '">' +
@@ -505,7 +504,7 @@ export class App {
     });
 
     // Navigation Search area Open
-    $('.nav-link-search').on('click', function () {
+    $('.nav-link-search').on('click', function() {
       let $this = $(this);
       let searchInput = $(this).parent('.nav-search').find('.search-input');
       searchInput.addClass('open');
@@ -516,7 +515,7 @@ export class App {
     });
 
     // Navigation Search area Close
-    $('.search-input-close i').on('click', function () {
+    $('.search-input-close i').on('click', function() {
       let $this = $(this),
         searchInput = $(this).closest('.search-input');
       if (searchInput.hasClass('open')) {
@@ -531,7 +530,7 @@ export class App {
     });
 
     // Filter
-    $('.search-input .input').on('keyup', function (e) {
+    $('.search-input .input').on('keyup', function(e) {
       if (e.keyCode !== 38 && e.keyCode !== 40 && e.keyCode !== 13) {
         if (e.keyCode == 27) {
           $('.app-content').removeClass('show-overlay');
@@ -564,8 +563,7 @@ export class App {
           // condition for bookmark and search input click
           if ($('.bookmark-input').focus()) {
             $('.bookmark-input .search-list').addClass('show');
-          }
-          else {
+          } else {
             $('.search-input .search-list').addClass('show');
             $('.bookmark-input .search-list').removeClass('show');
           }
@@ -582,7 +580,7 @@ export class App {
             a = 0;
 
           // getting json data from file for search results
-          $.getJSON('../../../app-assets/data/' + $filename + '.json', function (data) {
+          $.getJSON('../../../app-assets/data/' + $filename + '.json', function(data) {
 
             for (let i = 0; i < data.listItems.length; i++) {
               // if current is bookmark then give class to star icon
@@ -595,8 +593,7 @@ export class App {
                   if (data.listItems[i].name === arrList[j].firstChild.dataset.originalTitle) {
                     activeClass = ' warning';
                     break;
-                  }
-                  else {
+                  } else {
                     activeClass = '';
                   }
                 }
@@ -606,8 +603,7 @@ export class App {
               if ((data.listItems[i].name.toLowerCase().indexOf(value) == 0) && (a < 10)) {
                 if (a === 0) {
                   $activeItemClass = 'current_item';
-                }
-                else {
+                } else {
                   $activeItemClass = '';
                 }
                 $startList += '<li class="auto-suggestion d-flex align-items-center justify-content-between cursor-pointer ' + $activeItemClass + '">' +
@@ -631,8 +627,7 @@ export class App {
                 for (let j = 0; j < arrList.length; j++) {
                   if (data.listItems[i].name === arrList[j].firstChild.dataset.originalTitle) {
                     activeClass = ' warning';
-                  }
-                  else {
+                  } else {
                     activeClass = '';
                   }
                 }
@@ -642,8 +637,7 @@ export class App {
               if (!(data.listItems[i].name.toLowerCase().indexOf(value) == 0) && (data.listItems[i].name.toLowerCase().indexOf(value) > -1) && (a < 10)) {
                 if (a === 0) {
                   $activeItemClass = 'current_item';
-                }
-                else {
+                } else {
                   $activeItemClass = '';
                 }
                 $otherList += '<li class="auto-suggestion d-flex align-items-center justify-content-between cursor-pointer ' + $activeItemClass + '">' +
@@ -709,15 +703,15 @@ export class App {
     });
 
     // Add class on hover of the list
-    $(document).on('mouseenter', '.search-list li', function (e) {
+    $(document).on('mouseenter', '.search-list li', function(e) {
       $(this).siblings().removeClass('current_item');
       $(this).addClass('current_item');
     });
-    $(document).on('click', '.search-list li', function (e) {
+    $(document).on('click', '.search-list li', function(e) {
       e.stopPropagation();
     });
 
-    $('html').on('click', function ($this) {
+    $('html').on('click', function($this) {
       if (!$($this.target).hasClass('bookmark-icon')) {
         if ($('.bookmark-input .search-list').hasClass('show')) {
           $('.bookmark-input .search-list').removeClass('show');
@@ -729,7 +723,7 @@ export class App {
     });
 
     // Favorite star click
-    $(document).on('click', '.bookmark-input .search-list .bookmark-icon', function (e) {
+    $(document).on('click', '.bookmark-input .search-list .bookmark-icon', function(e) {
       e.stopPropagation();
       if ($(this).hasClass('warning')) {
         $(this).removeClass('warning');
@@ -740,8 +734,7 @@ export class App {
           }
         }
         e.preventDefault();
-      }
-      else {
+      } else {
         let arrList = $('ul.nav.navbar-nav.bookmark-icons li');
         $(this).addClass('warning');
         e.preventDefault();
@@ -761,7 +754,7 @@ export class App {
     });
 
     // If we use up key(38) Down key (40) or Enter key(13)
-    $(window).on('keydown', function (e) {
+    $(window).on('keydown', function(e) {
       let $current = $('.search-list li.current_item'), $next, $prev;
       if (e.keyCode === 40) {
         $next = $current.next();

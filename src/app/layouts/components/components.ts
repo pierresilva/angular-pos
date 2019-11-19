@@ -1,8 +1,10 @@
-declare var $: any;
+declare let $: any;
+
 export class Components {
   init(window, document, $) {
-    /***** Component Variables *****/
-    var alertValidationInput = $('.alert-validation'),
+    /***** Component letiables *****/
+      // tslint:disable-next-line:one-variable-per-declaration
+    let alertValidationInput = $('.alert-validation'),
       alertRegex = /^[0-9]+$/,
       alertValidationMsg = $('.alert-validation-msg'),
       accordion = $('.accordion'),
@@ -12,7 +14,7 @@ export class Components {
 
     /***** Alerts *****/
     /* validation with alert */
-    alertValidationInput.on('input', function () {
+    alertValidationInput.on('input', function() {
       if (alertValidationInput.val().match(alertRegex)) {
         alertValidationMsg.css('display', 'none');
       } else {
@@ -28,24 +30,24 @@ export class Components {
       } else if (e.which == 37) {
         $('.carousel[data-keyboard="true"]').carousel('prev');
       }
-    })
+    });
 
     // To open Collapse on hover
     if (accordion.attr('data-toggle-hover', 'true')) {
-      collapseHoverTitle.closest('.card').on('mouseenter', function () {
+      collapseHoverTitle.closest('.card').on('mouseenter', function() {
         $(this).children('.collapse').collapse('show');
       });
     }
     // When Collapse open
-    collapseTitle.on('click', function () {
-      var $this = $(this);
+    collapseTitle.on('click', function() {
+      let $this = $(this);
       $this.closest('.collapse-header').siblings('.collapse-header.open').removeClass('open');
-      $this.closest('.collapse-header').toggleClass('open')
+      $this.closest('.collapse-header').toggleClass('open');
     });
 
     /***** Dropdown *****/
     // For Dropdown With Icons
-    dropdownMenuIcon.on('click', function () {
+    dropdownMenuIcon.on('click', function() {
       $('.dropdown-icon-wrapper .dropdown-toggle i').remove();
       $(this).find('i').clone().appendTo('.dropdown-icon-wrapper .dropdown-toggle');
       $('.dropdown-icon-wrapper .dropdown-toggle .dropdown-item').removeClass('dropdown-item');
@@ -69,8 +71,8 @@ export class Components {
 
     /***** Chips *****/
     // To close chips
-    $('.chip-closeable').on('click', function () {
+    $('.chip-closeable').on('click', function() {
       $(this).closest('.chip').remove();
-    })
+    });
   }
 }

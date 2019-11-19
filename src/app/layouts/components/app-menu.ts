@@ -13,14 +13,10 @@ export class AppMenu {
 
     $.app = $.app || {};
 
-    console.log($.app);
-
     let $body = $('body');
     let $window = $(window);
     let menuWrapper_el = $('div[data-menu="menu-wrapper"]').html();
     let menuWrapperClasses = $('div[data-menu="menu-wrapper"]').attr('class');
-
-
 
     // Main menu
     $.app = {

@@ -6,7 +6,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: './modules/modules.module#ModulesModule',
-  }
+  },
+  {
+    path: '**',
+    redirectTo: '/'
+  },
 ];
 
 @NgModule({

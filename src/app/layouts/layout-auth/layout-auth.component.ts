@@ -13,8 +13,7 @@ export class LayoutAuthComponent implements OnInit {
 
   ngOnInit() {
     $('body').removeClass();
-    // $('body').data('col', '1-column');
-    $('body').addClass('vertical-layout vertical-menu-modern 1-column navbar-floating footer-static bg-full-screen-image blank-page');
+    $('body').addClass('vertical-layout vertical-menu-modern 1-column navbar-floating footer-static bg-full-screen-image blank-page dark-layout');
   }
 
 }
